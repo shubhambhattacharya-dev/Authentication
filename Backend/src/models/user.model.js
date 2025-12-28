@@ -28,3 +28,5 @@ const userSchema= new mongoose.Schema({
     verificationToken:String,
     verificationTokenExpires:Date,
 },{timestamps:true})
+
+export const User =mongoose.model('User',userSchema);
