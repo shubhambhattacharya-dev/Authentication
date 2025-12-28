@@ -1,16 +1,19 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import { connectDB } from './database/connectDB.js';
+import authRouter from './Routes/auth.route.js';
 
 
 dotenv.config();
 
 const app=express();
-const port= process.env.PORT ||3000;
+const port= process.env.PORT ||8000;
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
-app.get("/",(req,res)=>{
-    res.send("Authentication Backend Server is running");
-})
+
+app.use("/api/auth",authRouter);
+
 
 const startServer=async()=>{
     try {
